@@ -19,6 +19,8 @@ class AuthState {
     );
   }
 
+  static UserEntity? userEntity;
+
   AuthState copyWith(
       {bool? isLoading,
       String? error,

@@ -25,19 +25,9 @@ class _LoginViewState extends ConsumerState<LoginView> {
 
   IconData _hideIcon = Icons.remove_red_eye;
 
-  // @override
-  // void initState() {
-  //   super.initState();
-  //   Dio dio = Dio();
-  //   print('message from server');
-  //   print(dio.get('http://10.0.2.2:3000/'));
-  // }
-
   void _submitLogin() {
     final contact = _contactController.text.trim();
     final password = _passwordController.text.trim();
-
-    print('Contact : $contact Password : $password');
 
     ref
         .watch(authViewModelProvider.notifier)
@@ -130,13 +120,13 @@ class _LoginViewState extends ConsumerState<LoginView> {
                     },
                     child: const Text('Don\'t have an account ? Register Here'),
                   ),
-                  TextButton(
-                    onPressed: () {
-                      Navigator.popAndPushNamed(
-                          context, AppRoutes.dashboardRoute);
-                    },
-                    child: const Text('Dashboard'),
-                  ),
+                  // TextButton(
+                  //   onPressed: () {
+                  //     Navigator.popAndPushNamed(
+                  //         context, AppRoutes.dashboardRoute);
+                  //   },
+                  //   child: const Text('Dashboard'),
+                  // ),
                 ],
               ),
             ),

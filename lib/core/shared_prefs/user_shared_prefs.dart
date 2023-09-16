@@ -26,6 +26,16 @@ class UserSharedPrefs {
     }
   }
 
+  void clearSharedPrefs() async {
+    try {
+      _sharedPreferences = await SharedPreferences.getInstance();
+
+      await _sharedPreferences.clear();
+    } catch (err) {
+      print('Error during loging out from shared prefs: $err');
+    }
+  }
+
   // get user token
 
   Future<Either<Failure, String?>> getUserToken() async {

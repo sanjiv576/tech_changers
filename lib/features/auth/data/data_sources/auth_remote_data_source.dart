@@ -1,6 +1,7 @@
 import 'package:dartz/dartz.dart';
 import 'package:dio/dio.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
+import 'package:my_project/features/auth/presentation/state/auth_state.dart';
 
 import '../../../../config/constants/api_endpoints.dart';
 import '../../../../core/failure/failure.dart';
@@ -78,6 +79,9 @@ class AuthRemoteDataSource {
 
         // also store the user data in shared prefs
         _userSharedPrefs.setUser(userEntity);
+
+        // store the user data in the static variable as well
+        AuthState.userEntity = userEntity;
 
         print(userEntity);
         return Right(userEntity);

@@ -5,6 +5,7 @@ import 'package:jwt_decoder/jwt_decoder.dart';
 import '../../../../config/router/app_routes.dart';
 import '../../../../core/shared_prefs/user_shared_prefs.dart';
 import '../../../auth/domain/entity/user_entity.dart';
+import '../../../auth/presentation/state/auth_state.dart';
 
 final splashViewModelProvider = StateNotifierProvider<SplashViewModel, void>(
   (ref) {
@@ -36,6 +37,8 @@ class SplashViewModel extends StateNotifier<void> {
 
           data.fold((fail) => user = null, (success) => user = success!);
           if (user != null) {
+            // store the user data in the static variable as well
+            AuthState.userEntity = user;
             if (user!.role == 'user') {
               Navigator.popAndPushNamed(context, AppRoutes.dashboardRoute);
             } else {
